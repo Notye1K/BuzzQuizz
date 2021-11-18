@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="csss/stylesK.css">
+    <link rel="stylesheet" href="csss/mobile.css">
 
     <title>BuzzQuizz</title>
 </head>
@@ -17,11 +18,38 @@
         BuzzQuizz
     </header>
     <main>
-        <section class="myQuizzes">
+        <section class="myQuizzes noQuizz displayNone">
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
             </div>
             <button>Criar Quizz</button>
+        </section>
+
+        <section class="myQuizzes withQuizz">
+            <div class="headerMyQuizzes">
+                <h1>Seus Quizzes</h1>
+                <ion-icon name="add-circle"></ion-icon>
+            </div>
+            <div class="containerMyQuizzes">
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+            </div>
         </section>
 
         <div class="container">
@@ -62,6 +90,6 @@
             </section>
         </div>
     </main>
-    
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>

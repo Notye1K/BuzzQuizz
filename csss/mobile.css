@@ -1,0 +1,27 @@
+@media (max-width: 1100px){
+    .myQuizzes {
+        width: 340px;
+    }
+
+    .withQuizz {
+        height: 420px;
+        overflow-y: scroll;
+
+    }
+    .containerMyQuizzes {
+        height: auto;
+    
+        display: flex;
+        flex-direction: column;
+
+        overflow-y: scroll;
+    }
+
+    .container{
+        width: auto;
+    }
+    .quizzes {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}
