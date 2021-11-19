@@ -1,20 +1,22 @@
 @media (max-width: 1100px){
     .myQuizzes {
         width: 340px;
+        margin: 120px auto 38px auto;
     }
 
+    .headerMyQuizzes {
+        justify-content: space-between;
+    }
     .withQuizz {
         height: 420px;
-        overflow-y: scroll;
-
     }
     .containerMyQuizzes {
-        height: auto;
+        height: 380px;
     
         display: flex;
         flex-direction: column;
 
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .container{

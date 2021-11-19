@@ -5,12 +5,11 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA;
 }
-header {
+header.headerBody {
     width: 100%;
     height: 69px;
     background: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 77px;
 
     font-style: normal;
     font-weight: bold;
@@ -21,17 +20,22 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 main {
     margin-bottom: 100px;
+    margin-top: 69px;
 }
 
 
 .myQuizzes {
     width: 1051px;
-    height: 181px;    
+    height: 200px;    
     background: #FAFAFA;
-    margin: 0 auto 77px auto;
+    margin: 120px auto 77px auto;
 }
 .noQuizz{
     border: 1px dashed #D5D5D5;
@@ -90,7 +94,7 @@ main {
     display: flex;
     gap: 15px;
 
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .containerMyQuizzes .quizz{
     flex-shrink: 0;
@@ -141,4 +145,67 @@ h1 {
 
 .displayNone {
     display: none;
+}
+
+
+
+
+/*                      PAGE 2                 */
+
+main header {
+    width: 100%;
+    height: 227px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url("https://unsplash.it/1600/900");
+    background-size: cover;
+    margin-bottom: 70px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 39px;
+    line-height: 46px;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerQuestion {
+    width: 759px;
+    height: 676px;
+    background: #FFFFFF;
+    padding: 27px 34px;
+    margin: 0 auto 70px auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.question {
+    width: 100%;
+    height: 138px;    
+    background: #434CA0;
+    margin-bottom: 20px;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 27px;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.answer {
+    width: 330px;
+    height: 220px;
+    margin-bottom: 18px;
+
+    overflow: hidden;
+}
+.answer h1 {
+    margin-top: 10px;
 }

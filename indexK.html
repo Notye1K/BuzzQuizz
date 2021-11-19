@@ -14,18 +14,18 @@
     <title>BuzzQuizz</title>
 </head>
 <body>
-    <header>
+    <header class="headerBody">
         BuzzQuizz
     </header>
-    <main>
-        <section class="myQuizzes noQuizz">
+    <main class="displayNone">
+        <section class="myQuizzes noQuizz displayNone">
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
             </div>
             <button>Criar Quizz</button>
         </section>
 
-        <section class="myQuizzes withQuizz displayNone">
+        <section class="myQuizzes withQuizz">
             <div class="headerMyQuizzes">
                 <h1>Seus Quizzes</h1>
                 <ion-icon name="add-circle"></ion-icon>
@@ -90,6 +90,94 @@
             </section>
         </div>
     </main>
+
+    <main class="">
+        <header>
+            O quão Potterhead é você?
+        </header>
+
+        <div class="allQuestions">
+            <section class="containerQuestion">
+                <div class="question">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</div>
+                <div class="answers">
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                </div>
+            </section>
+            <section class="containerQuestion">
+                <div class="question">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</div>
+                <div class="answers">
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                </div>
+            </section>
+            <section class="containerQuestion">
+                <div class="question">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</div>
+                <div class="answers">
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                    <div class="answer">
+                        <img src="https://unsplash.it/340/180" alt="">
+                        <h1>Mustela putorius (o Furão)</h1>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="finalScreen">
+            <section class="quizzEnding">
+                <div class="title">88% de acerto: Você é praticamente um aluno de Hogwarts!</div>
+                <div class="content">
+                    <img src="https://unsplash.it/340/180" alt="">
+                    <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+                </div>
+            </section>
+
+            <div class="buttons">
+                <button>Reiniciar Quizz</button>
+                <button>Voltar pra home</button>
+            </div>
+        </div>
+    </main>
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script/scriptK.js"></script>
