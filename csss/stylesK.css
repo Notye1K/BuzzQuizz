@@ -67,7 +67,9 @@ main {
     text-align: center;
     color: #EC362D;
 }
-
+.myQuizzes button:hover {
+    cursor: pointer;
+}
 
 .headerMyQuizzes {
     display: flex;
@@ -78,6 +80,9 @@ main {
 
     font-size: 35px;
     color: #EC362D;
+}
+.headerMyQuizzes ion-icon:hover {
+    cursor: pointer;
 }
 .containerMyQuizzes {
     margin-top: 10px;
@@ -129,6 +134,9 @@ h1 {
 
     display: flex;
     align-items: flex-end;
+}
+.quizz:hover {
+    cursor: pointer;
 }
 
 .displayNone {
