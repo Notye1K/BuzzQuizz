@@ -1,0 +1,30 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex
+{
+    display: flex;
+}
+
+.centralize
+{
+    justify-content: center;
+    align-items: center;
+}
+
+.header
+{
+    width: 100%;
+    height: 69px;
+    background-color: #EC362D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-title
+{
+    font-size: 37px;
+    font-weight: bold;
+    color: #fff;
+}
