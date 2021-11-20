@@ -138,9 +138,16 @@ h1 {
 
     display: flex;
     align-items: flex-end;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .quizz:hover {
     cursor: pointer;
+}
+.quizz img{
+    width: 340px;
+    height: 180px;
 }
 
 .displayNone {
@@ -168,6 +175,7 @@ main header {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 
@@ -207,6 +215,11 @@ main header {
     margin-bottom: 18px;
 
     overflow: hidden;
+    text-overflow: ellipsis;
+}
+.answer img {
+    width: 330px;
+    height: 175px;
 }
 .answer:hover {
     cursor: pointer;

@@ -17,15 +17,15 @@
     <header class="headerBody">
         BuzzQuizz
     </header>
-    <main class="displayNone">
-        <section class="myQuizzes noQuizz displayNone">
+    <main class="">
+        <section class="myQuizzes noQuizz ">
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
             </div>
             <button>Criar Quizz</button>
         </section>
 
-        <section class="myQuizzes withQuizz">
+        <section class="myQuizzes withQuizz displayNone">
             <div class="headerMyQuizzes">
                 <h1>Seus Quizzes</h1>
                 <ion-icon name="add-circle"></ion-icon>
@@ -91,7 +91,7 @@
         </div>
     </main>
 
-    <main class="">
+    <main class="displayNone insideQuizz">
         <header>
             O quão Potterhead é você?
         </header>
@@ -162,7 +162,7 @@
             </section>
         </div>
 
-        <div class="finalScreen">
+        <div class="finalScreen displayNone">
             <section class="quizzEnding">
                 <div class="title">88% de acerto: Você é praticamente um aluno de Hogwarts!</div>
                 <div class="content">
@@ -172,8 +172,8 @@
             </section>
 
             <div class="buttons">
-                <button class="restart">Reiniciar Quizz</button>
-                <button class="home">Voltar pra home</button>
+                <button class="restart" onclick="restart()">Reiniciar Quizz</button>
+                <button class="home" onclick="home()">Voltar pra home</button>
             </div>
         </div>
     </main>
