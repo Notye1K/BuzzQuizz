@@ -12,9 +12,77 @@
     <title>Criar quizz</title>
 </head>
 <body>
-    <header class="header flex centralize">
+    <header class="header flex centralize red-bg">
         <h1 class="header-title">BuzzQuizz</h1>
     </header>
-    <main class="main"></main>
+    <main class="main flex centralize flex-column quizz-basics">
+        <div class="start-title-align">
+            <h2 class="inpage-title weight-700">Comece pelo começo</h2>
+        </div>
+        <div class="central-panel flex flex-column">
+            <input class="create-quizz-input quizz-name" type="text" placeholder="Título do seu quizz" onfocusout="checkQuizzName(this)">
+            <div class="error-text-align"><span class="name-error error-text"></span></div>
+            <input class="create-quizz-input quizz-image-url" type="text" placeholder="URL da imagem do seu quizz" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
+            <input class="create-quizz-input n-of-questions" type="text" placeholder="Quantidade de perguntas do quizz" onfocusout="checkNumberQuestions(this)">
+            <div class="error-text-align"><span class="questions-error error-text"></span></div>
+            <input class="create-quizz-input n-of-levels" type="text" placeholder="Quantidade de níveis do quizz" onfocusout="checkNumberLevels(this)">
+            <div class="error-text-align"><span class="levels-error error-text"></span></div>
+        </div>
+        <div class="bt-align">
+            <button class="finish-bt red-bg" onClick="completeBasics()"><span class="bt-text">Prosseguir para criar perguntas</span></button>
+        </div>
+    </main>
+    <main class="main flex centralize flex-column quizz-questions">
+        <div class="start-title-align">
+            <h2 class="inpage-title weight-700">Crie suas perguntas</h2>
+            <div class="central-panel flex flex-column q1">
+
+                <div class="question-fill-guide weight-700">Pegunta 1</div>
+                <input class="create-quizz-input question-text" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+                <div class="error-text-align"><span class="question-error error-text"></span></div>
+                <input class="create-quizz-input question-bgcolor" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
+                <div class="error-text-align"><span class="color-error error-text"></span></div>
+
+
+                <div class="question-fill-guide weight-700">Resposta correta</div>
+                <input class="create-quizz-input question-text" type="text" placeholder="Resposta correta" onfocusout="checkAnswerText(this)">
+                <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem" onfocusout="checkURL(this)">
+                <div class="error-text-align"><span class="url-error error-text"></span></div>
+
+
+                <div class="question-fill-guide weight-700">Respostas Incorretas</div>
+
+                <div class="wrong-answers">
+                    <div class="wrong-answer-container">
+                        <input class="create-quizz-input question-text" type="text" placeholder="Resposta incorreta 1" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem 1" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+
+                    <div class="wrong-answer-container">
+                        <div class="question-fill-guide weight-700"></div>
+                        <input class="create-quizz-input question-text" type="text" placeholder="Resposta incorreta 2" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem 2" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+
+                    <div class="wrong-answer-container">
+                        <div class="question-fill-guide weight-700"></div>
+                        <input class="create-quizz-input question-text" type="text" placeholder="Resposta incorreta 3" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem 3" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+                </div>
+        </div>
+        <div class="bt-align">
+            <button class="finish-bt red-bg" onClick="completeQuestions()"><span class="bt-text">Prosseguir para criar níveis</span></button>
+        </div>
+    </main>
+    <script src="/BuzzQuizz/script/scriptF.js"></script>
 </body>
 </html>
