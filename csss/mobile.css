@@ -1,0 +1,86 @@
+@media (max-width: 1100px){
+    .myQuizzes {
+        width: 340px;
+        margin: 120px auto 38px auto;
+    }
+
+    .headerMyQuizzes {
+        justify-content: space-between;
+    }
+    .withQuizz {
+        height: 420px;
+    }
+    .containerMyQuizzes {
+        height: 380px;
+    
+        display: flex;
+        flex-direction: column;
+
+        overflow-y: auto;
+    }
+
+    .container{
+        width: auto;
+    }
+    .quizzes {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+
+    /*                      PAGE 2                 */
+
+    main header {
+        height: 142px;
+
+        font-size: 19px;
+        line-height: 22px;
+    }
+
+
+    .containerQuestion {
+        width: 100%;
+        height: auto;
+        padding: 17px;
+    }
+    .question {
+        height: 89px;
+
+        font-size: 19px;
+        line-height: 22px;
+    }
+    .answers {
+        justify-content: space-evenly;
+    }
+    .answer {
+        width: 163px;
+        height: 155px;
+        margin-bottom: 0;
+    }
+    .answer img {
+        width: 163px;
+        height: 113px;
+    }
+    .answer h1 {
+        font-size: 13px;
+        line-height: 15px;
+    }
+
+
+    .quizzEnding {
+        width: 100%;
+        height: 500px;
+    }
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .content img {
+        width: 100%;
+        /* height: 255px; */
+    }
+    .content p {
+        margin: 0;
+        margin-top: 15px;
+    }
+}
