@@ -5,7 +5,7 @@ promisse.then((answer)=>{
     quizzes.innerHTML = ''
     for (let i=0; i<answer.data.length; i++){
         quizzes.innerHTML += `
-        <div class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+        <div data-identifier="general-quizzes" data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
             <p>${answer.data[i].title}</p>
         </div>
         `
@@ -46,7 +46,7 @@ function insideQuizz (id) {
             questions[i].answers.sort(comparador)
             AllQuestions.innerHTML +=
             `<section class="containerQuestion">
-                <div class="question">${questions[i].title}</div>
+                <div data-identifier="question" class="question">${questions[i].title}</div>
                 <div class="answers">
 
                 </div>
@@ -59,7 +59,7 @@ function insideQuizz (id) {
                 if (questions[i].answers[j].isCorrectAnswer){
                     AllAnswers.innerHTML += 
                     `
-                    <div class="answer" onclick='isCorrectAnswer(${questions[i].answers[j].isCorrectAnswer}, this)'>
+                    <div data-identifier="answer" class="answer" onclick='isCorrectAnswer(${questions[i].answers[j].isCorrectAnswer}, this)'>
                         <img src="${questions[i].answers[j].image}" alt="">
                         <h1 class="right">${questions[i].answers[j].text}</h1>
                     </div>
@@ -154,3 +154,6 @@ let couter = 0
 let pontuation = 0
 let levels
 let ID
+
+
+//falta -- data-identifier="user-quizzes" -- data-identifier="quizz-card" -- Tela de criação de quizz

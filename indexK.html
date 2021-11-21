@@ -22,13 +22,13 @@
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
             </div>
-            <button>Criar Quizz</button>
+            <button data-identifier="create-quizz">Criar Quizz</button>
         </section>
 
         <section class="myQuizzes withQuizz displayNone">
             <div class="headerMyQuizzes">
                 <h1>Seus Quizzes</h1>
-                <ion-icon name="add-circle"></ion-icon>
+                <ion-icon data-identifier="create-quizz" name="add-circle"></ion-icon>
             </div>
             <div class="containerMyQuizzes">
                 <div class="quizz">
@@ -164,7 +164,7 @@
 
         <div class="finalScreen displayNone">
             <section class="quizzEnding">
-                <div class="title">88% de acerto: Você é praticamente um aluno de Hogwarts!</div>
+                <div data-identifier="quizz-result" class="title">88% de acerto: Você é praticamente um aluno de Hogwarts!</div>
                 <div class="content">
                     <img src="https://unsplash.it/340/180" alt="">
                     <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
