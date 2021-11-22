@@ -2,8 +2,21 @@ const promisse = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quiz
 promisse.then((answer)=>{
     const quizzes = document.querySelector('.quizzes')
 
+    // if (localStorage.getItem("id") !== null) {
+    //     let id = JSON.parse(localStorage.getItem("id"))
+        
+
+    //     for (let i = 0; i < id.length; i++) {
+    //         const element = array[i];
+            
+    //     }
+    // }
+
     quizzes.innerHTML = ''
     for (let i=0; i<answer.data.length; i++){
+        // if (answer.data[i].id) {
+            
+        // }
         quizzes.innerHTML += `
         <div data-identifier="general-quizzes" data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
             <p>${answer.data[i].title}</p>

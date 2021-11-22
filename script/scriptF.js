@@ -259,7 +259,7 @@ function completeQuestions() {
             return
         }
         else {
-            console.log('aqui')
+            //console.log('aqui')
             createQuizz.questions = []
             for (let i = 0; i < numberOFquestions; i++) {
                 let w2 = ''
@@ -357,7 +357,7 @@ function completeQuestions() {
             }
         }
     }
-    console.log(createQuizz)
+    //console.log(createQuizz)
 }
 
 function buildLevels(number){
@@ -397,8 +397,27 @@ function end (){
         })   
     }
 
-    console.log(createQuizz)
+    //console.log(createQuizz)
     const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
-    promisse.then(()=> console.log('deu certo'))
-    promisse.catch((resposta)=> console.log(resposta))
+    promisse.then((resposta)=> {
+        console.log('deu certo')
+        console.log(resposta)
+
+        let newId = []
+        
+        if (localStorage.getItem("id") === null) {
+            newId = [resposta.data]
+        }
+        else{
+            newId = [JSON.parse(localStorage.getItem("id")), resposta.data]
+        }
+        
+
+        localStorage.setItem("id", JSON.stringify(newId));
+        console.log(JSON.parse(localStorage.getItem("id")))
+    })
+    promisse.catch((resposta)=> {
+        console.log(resposta)
+        alert('preencha corretamente')
+    })
 }
