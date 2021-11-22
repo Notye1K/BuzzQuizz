@@ -243,14 +243,14 @@ function completeQuestions() {
     for (let i = 0; i < span.length; i++) {
         if (span[i].innerHTML !== '') {
             
-            alert('Preencha corretamenta' + span.previousElementSibling.placeholder)
-            return
+            return alert('Preencha corretamenta')
         }
     }
     const need = document.querySelectorAll('.q .needed')
     for (let i = 0; i < need.length; i++) {
         if(need[i].value === ''){
-            alert('Preencha corretamenta' + need.placeholder)
+            alert('Preencha corretamenta')
+            return
         }
         else {
             createQuizz.questions = []
