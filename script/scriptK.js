@@ -155,5 +155,8 @@ let pontuation = 0
 let levels
 let ID
 
-
+function myquizz() {
+    document.querySelector('main').classList.add('displayNone')
+    document.querySelector('.main').classList.remove('hidden')
+}
 //falta -- data-identifier="user-quizzes" -- data-identifier="quizz-card" -- Tela de criação de quizz

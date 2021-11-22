@@ -256,6 +256,7 @@ main header {
 }
 .content {
     display: flex;
+    overflow: hidden;
 }
 .content img {
     width: 364px;

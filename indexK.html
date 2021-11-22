@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="csss/stylesF.css">
     <link rel="stylesheet" href="csss/stylesK.css">
     <link rel="stylesheet" href="csss/mobile.css">
 
@@ -17,18 +18,18 @@
     <header class="headerBody">
         BuzzQuizz
     </header>
-    <main class="">
+    <main class="displayNone">
         <section class="myQuizzes noQuizz ">
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
             </div>
-            <button data-identifier="create-quizz">Criar Quizz</button>
+            <button data-identifier="create-quizz" onclick="myquizz()">Criar Quizz</button>
         </section>
 
         <section class="myQuizzes withQuizz displayNone">
             <div class="headerMyQuizzes">
                 <h1>Seus Quizzes</h1>
-                <ion-icon data-identifier="create-quizz" name="add-circle"></ion-icon>
+                <ion-icon data-identifier="create-quizz" onclick="myquizz()" name="add-circle"></ion-icon>
             </div>
             <div class="containerMyQuizzes">
                 <div class="quizz">
@@ -178,8 +179,90 @@
         </div>
     </main>
 
+    <main class="main flex centralize flex-column quizz-basics createQuizz">
+        <div class="start-title-align">
+            <h2 class="inpage-title weight-700">Comece pelo começo</h2>
+        </div>
+        <div class="central-panel flex flex-column">
+            <input class="create-quizz-input quizz-name" type="text" placeholder="Título do seu quizz" onfocusout="checkQuizzName(this)">
+            <div class="error-text-align"><span class="name-error error-text"></span></div>
+            <input class="create-quizz-input quizz-image-url" type="text" placeholder="URL da imagem do seu quizz" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
+            <input class="create-quizz-input n-of-questions" type="text" placeholder="Quantidade de perguntas do quizz" onfocusout="checkNumberQuestions(this)">
+            <div class="error-text-align"><span class="questions-error error-text"></span></div>
+            <input class="create-quizz-input n-of-levels" type="text" placeholder="Quantidade de níveis do quizz" onfocusout="checkNumberLevels(this)">
+            <div class="error-text-align"><span class="levels-error error-text"></span></div>
+        </div>
+        <div class="bt-align">
+            <button class="finish-bt red-bg" onclick="completeBasics()"><span class="bt-text">Prosseguir para criar perguntas</span></button>
+        </div>
+    </main>
+    <main class="main flex centralize flex-column quizz-questions hidden">
+        <div class="start-title-align">
+            <h2 class="inpage-title weight-700">Crie suas perguntas</h2>
+            <div class="central-panel flex flex-column q">
+
+                <div class="question-fill-guide weight-700">Pegunta 1</div>
+                <input class="create-quizz-input question-text needed" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+                <div class="error-text-align"><span class="question-error error-text"></span></div>
+                <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
+                <div class="error-text-align"><span class="color-error error-text"></span></div>
+
+
+                <div class="question-fill-guide weight-700">Resposta correta</div>
+                <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta correta" onfocusout="checkAnswerText(this)">
+                <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem" onfocusout="checkURL(this)">
+                <div class="error-text-align"><span class="url-error error-text"></span></div>
+
+
+                <div class="question-fill-guide weight-700">Respostas Incorretas</div>
+
+                <div class="wrong-answers">
+                    <div class="wrong-answer-container">
+                        <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta incorreta 1" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem 1" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+
+                    <div class="wrong-answer-container">
+                        <div class="question-fill-guide weight-700"></div>
+                        <input class="create-quizz-input question-text" type="text" placeholder="Resposta incorreta 2" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem 2" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+
+                    <div class="wrong-answer-container">
+                        <div class="question-fill-guide weight-700"></div>
+                        <input class="create-quizz-input question-text" type="text" placeholder="Resposta incorreta 3" onfocusout="checkAnswerText(this)">
+                        <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                        <input class="create-quizz-input question-bgcolor" type="text" placeholder="URL da imagem 3" onfocusout="checkURL(this)">
+                        <div class="error-text-align"><span class="url-error error-text"></span></div>
+                    </div>
+                </div>
+        </div>
+        <div class="bt-align">
+            <button class="finish-bt red-bg" onclick="completeQuestions()"><span class="bt-text">Prosseguir para criar níveis</span></button>
+        </div>
+    </main>
+    <main class="Mainlevels hidden">
+        <div class="levels">
+            <div class="level">
+                <div>nivel 1</div>
+                <input type="text" placeholder="Título do nível">
+                <input type="text" placeholder="% de acerto mínima">
+                <input type="text" placeholder="URL da imagem do nível">
+                <input type="text" placeholder="Descrição do nível">
+            </div>
+        </div>
+        <button onclick="end()">Finalizar Quizz</button>
+    </main>
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script/scriptF.js"></script>
     <script src="script/scriptK.js"></script>
 </body>
 </html>
