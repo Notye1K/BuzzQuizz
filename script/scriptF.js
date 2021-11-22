@@ -283,7 +283,7 @@ function completeQuestions() {
             return
         }
         else {
-            console.log('aqui')
+            //console.log('aqui')
             createQuizz.questions = []
             for (let i = 0; i < numberOFquestions; i++) {
                 let w2 = ''
@@ -381,7 +381,7 @@ function completeQuestions() {
             }
         }
     }
-    console.log(createQuizz)
+    //console.log(createQuizz)
 }
 
 function buildLevels(number){
@@ -461,32 +461,6 @@ function checkLvlDesc(lvlDesc)
         lvDescError.innerHTML = '';
 }
 
-function end (){
-    createQuizz.levels = []
-    let inputTitle 
-    let inputPorcent 
-    let inputURL
-    let inputText
-    for (let i = 0; i < numberOFlevels; i++) {
-        inputTitle = document.querySelector(`.l${i+1}`).value
-        inputPorcent = document.querySelector(`.Porcentl${i+1}`).value
-        inputURL = document.querySelector(`.URLl${i+1}`).value
-        inputText = document.querySelector(`.Textl${i+1}`).value
-        
-        createQuizz.levels.push({
-            title: inputTitle,
-            image: inputURL,
-            text: inputText,
-            minValue: inputPorcent
-        })   
-    }
-
-    console.log(createQuizz)
-    const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
-    promisse.then(()=> console.log('deu certo'))
-    promisse.catch((resposta)=> console.log(resposta))
-}
-
 function expandQuestion(hiddenQuestion)
 {
     hiddenQuestion.classList.add("hidden");
@@ -512,4 +486,55 @@ function unlockWrongAnswer(inputFocus)
             `
         }
     }
+
+function end (){
+    createQuizz.levels = []
+    let inputTitle 
+    let inputPorcent 
+    let inputURL
+    let inputText
+    for (let i = 0; i < numberOFlevels; i++) {
+        inputTitle = document.querySelector(`.l${i+1}`).value
+        inputPorcent = document.querySelector(`.Porcentl${i+1}`).value
+        inputURL = document.querySelector(`.URLl${i+1}`).value
+        inputText = document.querySelector(`.Textl${i+1}`).value
+        
+        createQuizz.levels.push({
+            title: inputTitle,
+            image: inputURL,
+            text: inputText,
+            minValue: inputPorcent
+        })   
+    }
+
+    //console.log(createQuizz)
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
+    promisse.then((resposta)=> {
+        console.log('deu certo')
+        console.log(resposta)
+
+        let newId = []
+        let newId2 = []
+        
+        if (localStorage.getItem("id") === null) {
+            newId = [resposta.data]
+        }
+        else{
+            newId = JSON.parse(localStorage.getItem("id"))
+            for (let i = 0; i < newId.length; i++) {
+                newId2.push(newId[i])
+            }
+            newId2.push(resposta.data)
+            newId = newId2
+            //newId = [JSON.parse(localStorage.getItem("id")), resposta.data]
+        }
+        
+        console.log(newId)
+        localStorage.setItem("id", JSON.stringify(newId));
+        console.log(JSON.parse(localStorage.getItem("id")))
+    })
+    promisse.catch((resposta)=> {
+        console.log(resposta)
+        alert('preencha corretamente')
+    })
 }

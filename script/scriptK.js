@@ -1,16 +1,44 @@
 const promisse = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 promisse.then((answer)=>{
     const quizzes = document.querySelector('.quizzes')
+    const containerMyQuizzes = document.querySelector('.containerMyQuizzes')
 
+
+    let arraId = []
+    if (localStorage.getItem("id") !== null) {
+        let id = JSON.parse(localStorage.getItem("id"))
+        for (let i = 0; i < id.length; i++) {
+            arraId.push(id[i].id)
+        }
+    }
+
+    containerMyQuizzes.innerHTML = ''
     quizzes.innerHTML = ''
     for (let i=0; i<answer.data.length; i++){
-        quizzes.innerHTML += `
-        <div data-identifier="general-quizzes" data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
-            <p>${answer.data[i].title}</p>
-        </div>
-        `
-        quizzes.lastElementChild.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("${answer.data[i].image}")`
-        quizzes.lastElementChild.style.backgroundSize = 'contain, cover' // 100% 100% contain, cover
+        if (arraId.includes(answer.data[i].id)) {
+            document.querySelector('.noQuizz').classList.add('displayNone')
+            document.querySelector('.withQuizz').classList.remove('displayNone')
+
+            containerMyQuizzes.innerHTML += `
+            <div data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+                <p>${answer.data[i].title}</p>
+            </div>
+            `
+
+            console.log(answer.data[i])
+            console.log(answer.data)
+            console.log(arraId)
+            
+        }
+        else{
+            quizzes.innerHTML += `
+            <div data-identifier="general-quizzes" data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+                <p>${answer.data[i].title}</p>
+            </div>
+            `
+            quizzes.lastElementChild.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("${answer.data[i].image}")`
+            quizzes.lastElementChild.style.backgroundSize = 'contain, cover' // 100% 100% contain, cover
+        }
         // console.log(quizzes.lastElementChild)
         // console.dir(quizzes.lastElementChild)
         
