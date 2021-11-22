@@ -404,15 +404,22 @@ function end (){
         console.log(resposta)
 
         let newId = []
+        let newId2 = []
         
         if (localStorage.getItem("id") === null) {
             newId = [resposta.data]
         }
         else{
-            newId = [JSON.parse(localStorage.getItem("id")), resposta.data]
+            newId = JSON.parse(localStorage.getItem("id"))
+            for (let i = 0; i < newId.length; i++) {
+                newId2.push(newId[i])
+            }
+            newId2.push(resposta.data)
+            newId = newId2
+            //newId = [JSON.parse(localStorage.getItem("id")), resposta.data]
         }
         
-
+        console.log(newId)
         localStorage.setItem("id", JSON.stringify(newId));
         console.log(JSON.parse(localStorage.getItem("id")))
     })
