@@ -42,7 +42,7 @@ body
     color: #fff;
 }
 
-.start-title-align
+.create-title-align
 {
     margin-top: 70px;
 }
@@ -96,6 +96,12 @@ body
     font-size: 16px;
 }
 
+.qtitle-and-icon
+{
+    width: 560px;
+    justify-content: space-between;
+}
+
 .bt-align
 {
     margin: 85px 20px 0;
@@ -116,6 +122,18 @@ body
     font-size: 21px;
     text-align: center;
     color: #fff;
+}
+.return-home
+{
+    color: #818181;
+    font-size: 21px;
+    font-weight: 400;
+}
+.finish-home
+{
+    margin-top: 15px;
+    background-color: transparent;
+    border: none;
 }
 
 @media (max-width: 600px)

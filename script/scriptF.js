@@ -4,7 +4,7 @@ let numberOFlevels = 0
 
 function checkQuizzName(nameInput)
 {
-    const nameError = document.querySelector(".name-error");
+    const nameError = nameInput.nextElementSibling.firstChild;
     if(nameInput.value.length == 0)
         return;
     else if(nameInput.value.length < 20 || nameInput.value.length > 65)
@@ -15,7 +15,7 @@ function checkQuizzName(nameInput)
 
 function checkURL(urlInput)
 {
-    const informError = urlInput.nextElementSibling;
+    const informError = urlInput.nextElementSibling.firstChild;
     if(urlInput.value == '')
     {
         informError.innerHTML = '';
@@ -43,7 +43,7 @@ function verifyURL(url){
 
 function checkNumberQuestions(nQuestions)
 {
-    const nQerror = document.querySelector(".questions-error");
+    const nQerror = nQuestions.nextElementSibling.firstChild;
     if(nQuestions.value == '')
     {
         nQerror.innerHTML = '';
@@ -61,7 +61,7 @@ function checkNumberQuestions(nQuestions)
 
 function checkNumberLevels(nLevels)
 {
-    const nLerror = document.querySelector(".levels-error");
+    const nLerror = nLevels.nextElementSibling.firstChild;
     if(nLevels.value == '')
     {
         nLevels.innerHTML = '';
@@ -77,39 +77,41 @@ function checkNumberLevels(nLevels)
         nLerror.innerHTML = '';
 }
 
-function completeBasics()
+function completeBasics(button)
 {
-    const quizzName = document.querySelector(".quizz-name").value;
-    const nameError = document.querySelector(".name-error");
+    let panel = button.parentElement.parentElement;
 
-    const quizzImageUrl = document.querySelector(".quizz-image-url").value;
-    const informError = document.querySelector(".url-error");
+    const quizzName = panel.querySelector(".quizz-name");
+    const nameError = quizzName.nextElementSibling.firstChild;
 
-    const nOfQuestions = document.querySelector(".n-of-questions").value;
-    const nQerror = document.querySelector(".questions-error");
+    const quizzImageUrl = panel.querySelector(".quizz-image-url");
+    const informError = quizzImageUrl.nextElementSibling.firstChild;
 
-    const nOfLevels = document.querySelector(".n-of-levels").value;
-    const nLerror = document.querySelector(".levels-error");
+    const nOfQuestions = panel.querySelector(".n-of-questions");
+    const nQerror = nOfQuestions.nextElementSibling.firstChild;
 
-    if(quizzName == ''){
+    const nOfLevels = panel.querySelector(".n-of-levels");
+    const nLerror = nOfLevels.nextElementSibling.firstChild;
+
+    if(quizzName.value == ''){
         nameError.innerHTML = "Digite o nome do seu quizz";
     }
     else {
         nameError.innerHTML = ''
     }
-    if(quizzImageUrl == ''){
+    if(quizzImageUrl.value == ''){
         informError.innerHTML = "Digite uma url com uma imagem para seu quizz";
     }
     else {
         informError.innerHTML = ''
     }
-    if(nOfQuestions == ''){
+    if(nOfQuestions.value == ''){
         nQerror.innerHTML = "Digite quantas perguntas seu quizz terá";
     }
     else {
         nQerror.innerHTML = ''
     }
-    if(nOfLevels == ''){
+    if(nOfLevels.value == ''){
         nLerror.innerHTML = "Digite quantos níveis seu quizz terá";
     }
     else {
@@ -118,7 +120,6 @@ function completeBasics()
     
     if(nameError.innerHTML == '' && informError.innerHTML == '' && nQerror.innerHTML == '' && nLerror.innerHTML == '')
     {
-        //console.log('dentro')
         createQuizz = 
         {
             title: quizzName,
@@ -130,69 +131,102 @@ function completeBasics()
         quizzflow = document.querySelector(".quizz-questions");
         quizzflow.classList.remove("displayNone");
         buildQuestions(nOfQuestions);
-        buildLevels(nOfLevels)
+        buildLevels(nOfLevels);
     }
-    //console.log('fora')
 }
 
 function buildQuestions(questions)
 {
     numberOFquestions = questions
-    main = document.querySelector(".q")
-    main.innerHTML = ''
+    const questionBuild = document.querySelector(".quizz-questions")
+    questionBuild.innerHTML = 
+    `
+    <div class="create-title-align">
+        <h2 class="inpage-title weight-700">Crie suas perguntas</h2>
+    </div>
 
-    for (let i = 0; i < questions; i++) {
-        main.innerHTML += `
-        <div class="q${i+1}">
-            <div class="question-fill-guide weight-700 ">Pegunta ${i+1}</div>
-                    <input class="create-quizz-input question-text needed Title" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
-                    <div class="error-text-align"><span class="question-error error-text"></span></div>
-                    <input class="create-quizz-input question-bgcolor needed colorTitle" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
-                    <div class="error-text-align"><span class="color-error error-text"></span></div>
+    <div class="central-panel flex flex-column question">
+
+            <div class="question-fill-guide weight-700">Pegunta 1</div>
+            <input class="create-quizz-input question-text needed" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+            <div class="error-text-align"><span class="question-error error-text"></span></div>
+            <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
+            <div class="error-text-align"><span class="color-error error-text"></span></div>
 
 
-                    <div class="question-fill-guide weight-700">Resposta correta</div>
-                    <input class="create-quizz-input question-text needed correct" type="text" placeholder="Resposta correta" onfocusout="checkAnswerText(this)">
+            <div class="question-fill-guide weight-700">Resposta correta</div>
+            <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta correta" onfocusout="checkAnswerText(this)">
+            <div class="error-text-align"><span class="answer-error error-text"></span></div>
+            <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
+
+            <div class="question-fill-guide weight-700">Respostas Incorretas</div>
+
+            <div class="wrong-answers flex flex-column">
+
+                <div class="wrong-answer-container flex flex-column">
+                    <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta incorreta 1" onfocusout="checkAnswerText(this)">
                     <div class="error-text-align"><span class="answer-error error-text"></span></div>
-                    <input class="create-quizz-input question-bgcolor needed imgCorrect" type="text" placeholder="URL da imagem" onfocusout="checkURL(this)">
+                    <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem 1" onfocusout="checkURL(this)">
                     <div class="error-text-align"><span class="url-error error-text"></span></div>
+                </div>
+
+            </div>
+
+            <div class="bt-align">
+                <button class="finish-bt red-bg" onclick="completeQuestions()"><span class="bt-text">Prosseguir para criar níveis</span></button>
+            </div>
+
+        </div>
+
+    `
+    for (let i = 2; i < questions; i++) {
+        main.innerHTML += 
+        `
+        <div class="central-panel flex flex-column" onlick="expandQuestion(this)">
+            <div class="qtitle-and-icon flex">
+                <div class="question-fill-guide weight-700">Pegunta ${i}</div>
+                img src="/BuzzQuizz/assets/Vector.png" alt="click to expand">
+            </div>
+        </div>
+
+        <div class="central-panel flex flex-column question hidden">
+
+            <div class="question-fill-guide weight-700">Pegunta ${i}</div>
+            <input class="create-quizz-input question-text needed" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+            <div class="error-text-align"><span class="question-error error-text"></span></div>
+            <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
+            <div class="error-text-align"><span class="color-error error-text"></span></div>
 
 
-                    <div class="question-fill-guide weight-700">Respostas Incorretas</div>
+            <div class="question-fill-guide weight-700">Resposta correta</div>
+            <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta correta" onfocusout="checkAnswerText(this)">
+            <div class="error-text-align"><span class="answer-error error-text"></span></div>
+            <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
 
-                    <div class="wrong-answers">
-                        <div class="wrong-answer-container">
-                            <input class="create-quizz-input question-text needed wrong1" type="text" placeholder="Resposta incorreta 1" onfocusout="checkAnswerText(this)">
-                            <div class="error-text-align"><span class="answer-error error-text"></span></div>
-                            <input class="create-quizz-input question-bgcolor needed imgWrong1" type="text" placeholder="URL da imagem 1" onfocusout="checkURL(this)">
-                            <div class="error-text-align"><span class="url-error error-text"></span></div>
-                        </div>
+            <div class="question-fill-guide weight-700">Respostas Incorretas</div>
 
-                        <div class="wrong-answer-container">
-                            <div class="question-fill-guide weight-700"></div>
-                            <input class="create-quizz-input question-text wrong2" type="text" placeholder="Resposta incorreta 2" onfocusout="checkAnswerText(this)">
-                            <div class="error-text-align"><span class="answer-error error-text"></span></div>
-                            <input class="create-quizz-input question-bgcolor imgWrong2" type="text" placeholder="URL da imagem 2" onfocusout="checkURL(this)">
-                            <div class="error-text-align"><span class="url-error error-text"></span></div>
-                        </div>
+            <div class="wrong-answers flex flex-column">
 
-                        <div class="wrong-answer-container">
-                            <div class="question-fill-guide weight-700"></div>
-                            <input class="create-quizz-input question-text wrong3" type="text" placeholder="Resposta incorreta 3" onfocusout="checkAnswerText(this)">
-                            <div class="error-text-align"><span class="answer-error error-text"></span></div>
-                            <input class="create-quizz-input question-bgcolor imgWrong3" type="text" placeholder="URL da imagem 3" onfocusout="checkURL(this)">
-                            <div class="error-text-align"><span class="url-error error-text"></span></div>
-                        </div>
-                    </div>
+                <div class="wrong-answer-container flex flex-column">
+                    <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta incorreta 1" onfocusout="checkAnswerText(this)">
+                    <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                    <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem 1" onfocusout="checkURL(this)" onfocus="unlockWrongAnswer(this)">
+                    <div class="error-text-align"><span class="url-error error-text"></span></div>
+                </div>
+
+            </div>
+
         </div>
         `
-        
     }
+
 }
 
 function checkQuestionText(qtInput)
 {
-    const qtError = qtInput.nextElementSibling;
+    const qtError = qtInput.nextElementSibling.firstChild;
     if(qtInput.value.length == 0)
         return;
     else if(qtInput.value.length < 20){
@@ -205,7 +239,7 @@ function checkQuestionText(qtInput)
 
 function checkColor(colorInput)
 {
-    const colorError = colorInput.nextElementSibling;
+    const colorError = colorInput.nextElementSibling.firstChild;
     if(colorInput.value.length == 0)
         return;
     else if(verifyColor(colorInput.value))
@@ -223,17 +257,7 @@ function verifyColor(color)
 
 function checkAnswerText(atInput)
 {
-    let answerError = atInput.nextElementSibling;
-    // if(atInput.placeholder == "Resposta correta")
-    //     answerError = document.querySelector(".answer-error");
-    // else
-    // {
-    //     for(let i = 1; i < 4; i++)
-    //     {
-    //         if(atInput.placeholder == `Resposta incorreta-${i}`)
-    //             answerError = document.querySelector(`.wa${i}-error`);
-    //     }
-    // }
+    let answerError = atInput.nextElementSibling.firstChild;
     if(atInput.value == '')
         answerError.innerHTML = "O texto da resposta não pode estar vazio";
 }
@@ -297,7 +321,7 @@ function completeQuestions() {
                         ]
                     })
                     document.querySelector(".quizz-questions").classList.add("displayNone")
-                    document.querySelector(".Mainlevels").classList.remove("displayNone")
+                    document.querySelector(".quizz-levels").classList.remove("displayNone")
                 }
                 else if (w3 === '' && w2 !== ''){
                     createQuizz.questions.push( {
@@ -322,7 +346,7 @@ function completeQuestions() {
                         ]
                     })
                     document.querySelector(".quizz-questions").classList.add("displayNone")
-                    document.querySelector(".Mainlevels").classList.remove("displayNone")
+                    document.querySelector(".quizz-levels").classList.remove("displayNone")
                 }
                 else {
                     createQuizz.questions.push( {
@@ -352,7 +376,7 @@ function completeQuestions() {
                         ]
                     })
                     document.querySelector(".quizz-questions").classList.add("displayNone")
-                    document.querySelector(".Mainlevels").classList.remove("displayNone")
+                    document.querySelector(".quizz-levels").classList.remove("displayNone")
                 }
             }
         }
@@ -362,19 +386,79 @@ function completeQuestions() {
 
 function buildLevels(number){
     const levels = document.querySelector('.levels')
-    levels.innerHTML= ''
-    for (let i = 0; i < number; i++) {
+    levels.innerHTML=
+    `
+        <div class="central-panel flex flex-column level">
+            <div class="question-fill-guide weight-700">Nivel 1</div>
+            <input class="create-quizz-input level-text" type="text" placeholder="Título do nível" onfocusout="checkLevelText(this)">
+            <div class="error-text-align"><span class="lv-title-error error-text"></span></div>
+            <input class="create-quizz-input min-percentage" type="text" placeholder="% de acerto mínima" onfocusout="checkPercentage(this)">
+            <div class="error-text-align"><span class="percentage-error error-text"></span></div>
+            <input class="create-quizz-input url" type="text" placeholder="URL da imagem do nível" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
+            <input class="create-quizz-input question-text" type="text" placeholder="Descrição do nível" onfocusout="checkLvlDesc(this)">
+            <div class="error-text-align"><span class="lv-desc-error error-text"></span></div>
+        </div>
+    `
+    for (let i = 2; i <= number; i++) {
         levels.innerHTML += `
-        <div class="level">
-                <div>nivel ${i+1}</div>
-                <input type="text" class="l${i+1}" placeholder="Título do nível">
-                <input type="text" class="Porcentl${i+1}" placeholder="% de acerto mínima">
-                <input type="text" class="URLl${i+1}" placeholder="URL da imagem do nível">
-                <input type="text" class="Textl${i+1}" placeholder="Descrição do nível">
+        <div class="central-panel flex flex-column" onClick="expandQuestion(this)">
+            <div class="qtitle-and-icon flex">
+                <div class="question-fill-guide weight-700">Nível ${i}</div>
+                img src="/BuzzQuizz/assets/Vector.png" alt="click to expand">
+            </div>
+        </div>
+        <div class="central-panel flex flex-column level">
+            <div class="question-fill-guide weight-700">Nivel ${i}</div>
+            <input class="create-quizz-input level-text" type="text" placeholder="Título do nível" onfocusout="checkLevelText(this)">
+            <div class="error-text-align"><span class="lv-title-error error-text"></span></div>
+            <input class="create-quizz-input min-percentage" type="text" placeholder="% de acerto mínima" onfocusout="checkPercentage(this)">
+            <div class="error-text-align"><span class="percentage-error error-text"></span></div>
+            <input class="create-quizz-input url" type="text" placeholder="URL da imagem do nível" onfocusout="checkURL(this)">
+            <div class="error-text-align"><span class="url-error error-text"></span></div>
+            <input class="create-quizz-input question-text" type="text" placeholder="Descrição do nível" onfocusout="checkLvlDesc(this)">
+            <div class="error-text-align"><span class="lv-desc-error error-text"></span></div>
         </div>
         `
     }
     numberOFlevels = number
+}
+
+function checkLevelText(lvlTxtInput)
+{
+    const lvlTxtError = lvlTxtInput.nextElementSibling.firstChild;
+    if(lvlTxtInput.value == '')
+        return;
+    else if(lvlTxtInput.value.length < 10)
+        lvlTxtError.innerHTML = "O título do nível deve ter no mínimo 10 caracteres";
+    else
+        lvlTxtError.innerHTML = '';
+}
+
+function checkPercentage(percentageInput)
+{
+    const percentError = percentageInput.nextElementSibling.firstChild;
+    if(percentageInput.value == '')
+    {
+        return;
+    }
+    if(isNaN(percentageInput.value))
+        percentError.innerHTML = "Por favor digite a porcentagem de acertos (sem o simbolo %)";
+    else if(percentageInput.value < 0 || percentageInput.value > 100)
+        percentError.innerHTML = "A porcentagem deve ser um número entre 0 e 100";
+    else
+        percentError.innerHTML = '';
+}
+
+function checkLvlDesc(lvlDesc)
+{
+    const lvDescError = lvlDesc.nextElementSibling.firstChild;
+    if(lvlDesc.value == '')
+        return;
+    else if(lvlDesc.value.length < 30)
+        lvDescError.innerHTML = "A descrição do nível deve ter no mínimo 30 caracteres";
+    else
+        lvDescError.innerHTML = '';
 }
 
 function end (){
@@ -401,4 +485,31 @@ function end (){
     const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
     promisse.then(()=> console.log('deu certo'))
     promisse.catch((resposta)=> console.log(resposta))
+}
+
+function expandQuestion(hiddenQuestion)
+{
+    hiddenQuestion.classList.add("hidden");
+    const showQuestion = hiddenQuestion.nextElementSibling;
+    showQuestion.classList.remove("hidden");
+}
+
+function unlockWrongAnswer(inputFocus)
+{
+    const wrongAnswers = inputFocus.parentElement.parentElement;
+    for(let i = 1; i < 4; i++)
+    {
+        if(inputFocus.placeholder == `URL da imagem ${i}`)
+        {
+            wrongAnswers.innerHTML +=
+            `
+            <div class="wrong-answer-container flex flex-column">
+                <input class="create-quizz-input question-text needed" type="text" placeholder="Resposta incorreta ${i+1}" onfocusout="checkAnswerText(this)">
+                <div class="error-text-align"><span class="answer-error error-text"></span></div>
+                <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="URL da imagem ${i+1}" onfocusout="checkURL(this)" onfocus="unlockWrongAnswer(this)">
+                <div class="error-text-align"><span class="url-error error-text"></span></div>
+            </div>
+            `
+        }
+    }
 }
