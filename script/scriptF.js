@@ -126,9 +126,9 @@ function completeBasics()
         }
 
         let quizzflow = document.querySelector(".quizz-basics");
-        quizzflow.classList.add("hidden");
+        quizzflow.classList.add("displayNone");
         quizzflow = document.querySelector(".quizz-questions");
-        quizzflow.classList.remove("hidden");
+        quizzflow.classList.remove("displayNone");
         buildQuestions(nOfQuestions);
         buildLevels(nOfLevels)
     }
@@ -296,8 +296,8 @@ function completeQuestions() {
 
                         ]
                     })
-                    document.querySelector(".quizz-questions").classList.add("hidden")
-                    document.querySelector(".Mainlevels").classList.remove("hidden")
+                    document.querySelector(".quizz-questions").classList.add("displayNone")
+                    document.querySelector(".Mainlevels").classList.remove("displayNone")
                 }
                 else if (w3 === '' && w2 !== ''){
                     createQuizz.questions.push( {
@@ -321,8 +321,8 @@ function completeQuestions() {
 
                         ]
                     })
-                    document.querySelector(".quizz-questions").classList.add("hidden")
-                    document.querySelector(".Mainlevels").classList.remove("hidden")
+                    document.querySelector(".quizz-questions").classList.add("displayNone")
+                    document.querySelector(".Mainlevels").classList.remove("displayNone")
                 }
                 else {
                     createQuizz.questions.push( {
@@ -351,8 +351,8 @@ function completeQuestions() {
 
                         ]
                     })
-                    document.querySelector(".quizz-questions").classList.add("hidden")
-                    document.querySelector(".Mainlevels").classList.remove("hidden")
+                    document.querySelector(".quizz-questions").classList.add("displayNone")
+                    document.querySelector(".Mainlevels").classList.remove("displayNone")
                 }
             }
         }
@@ -398,4 +398,7 @@ function end (){
     }
 
     console.log(createQuizz)
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
+    promisse.then(()=> console.log('deu certo'))
+    promisse.catch((resposta)=> console.log(resposta))
 }

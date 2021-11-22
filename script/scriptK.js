@@ -157,6 +157,6 @@ let ID
 
 function myquizz() {
     document.querySelector('main').classList.add('displayNone')
-    document.querySelector('.main').classList.remove('hidden')
+    document.querySelector('.main').classList.remove('displayNone')
 }
 //falta -- data-identifier="user-quizzes" -- data-identifier="quizz-card" -- Tela de criação de quizz

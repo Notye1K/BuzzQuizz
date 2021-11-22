@@ -203,6 +203,8 @@ main header {
     align-items: center;
     justify-content: center;
     text-align: center;
+
+    overflow: hidden;
 }
 .answers {
     display: flex;
