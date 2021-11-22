@@ -243,7 +243,7 @@ function completeQuestions() {
     for (let i = 0; i < span.length; i++) {
         if (span[i].innerHTML !== '') {
             
-            return alert('Preencha corretamenta')
+            return alert('Preencha corretamenta aa')
         }
     }
     const need = document.querySelectorAll('.q .needed')
@@ -252,7 +252,14 @@ function completeQuestions() {
             alert('Preencha corretamenta')
             return
         }
+    }
+    for (let i = 0; i < need.length; i++) {
+        if(need[i].value === ''){
+            alert('Preencha corretamenta')
+            return
+        }
         else {
+            console.log('aqui')
             createQuizz.questions = []
             for (let i = 0; i < numberOFquestions; i++) {
                 let w2 = ''
@@ -289,6 +296,8 @@ function completeQuestions() {
 
                         ]
                     })
+                    document.querySelector(".quizz-questions").classList.add("hidden")
+                    document.querySelector(".Mainlevels").classList.remove("hidden")
                 }
                 else if (w3 === '' && w2 !== ''){
                     createQuizz.questions.push( {
@@ -312,6 +321,8 @@ function completeQuestions() {
 
                         ]
                     })
+                    document.querySelector(".quizz-questions").classList.add("hidden")
+                    document.querySelector(".Mainlevels").classList.remove("hidden")
                 }
                 else {
                     createQuizz.questions.push( {
@@ -340,10 +351,10 @@ function completeQuestions() {
 
                         ]
                     })
+                    document.querySelector(".quizz-questions").classList.add("hidden")
+                    document.querySelector(".Mainlevels").classList.remove("hidden")
                 }
             }
-            document.querySelector(".quizz-questions").classList.add("hidden")
-            document.querySelector(".Mainlevels").classList.remove("hidden")
         }
     }
     console.log(createQuizz)
