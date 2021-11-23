@@ -83,4 +83,9 @@
         margin: 0;
         margin-top: 15px;
     }
+
+    .quizzDone{
+        width: 340px;
+        height: 181px;
+    }
 }

@@ -213,7 +213,7 @@ main header {
 }
 .answer {
     width: 330px;
-    height: 220px;
+    height: 230px;
     margin-bottom: 18px;
 
     overflow: hidden;
@@ -319,4 +319,24 @@ main header {
 }
 .home:hover {
     cursor: pointer;
+}
+
+.quizzDone{
+    width: 500px;
+    height: 266px;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.quizzDone p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
 }

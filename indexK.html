@@ -18,7 +18,7 @@
     <header class="headerBody">
         BuzzQuizz
     </header>
-    <main class="displayNone">
+    <main class="">
         <section class="myQuizzes noQuizz ">
             <div class="zeroQuizz">
                 Você não criou nenhum quizz ainda :(
@@ -212,14 +212,14 @@
             <button class="finish-bt red-bg" onclick="end()"><span class="bt-text">Finalizar Quizz</span></button>
         </div>
     </main>
-    <main class="main flex centralize flex-column">
+    <main class="main flex centralize flex-column finalScreenQuizz displayNone">
         <div class="create-title-align">
             <h2 class="inpage-title weight-700">Seu quizz está pronto!</h2>
         </div>
-        <div class="central-panel">placeholder - foto do quizz pronto</div>
+        <div class="central-panel quizzDone"><p>aaaaaaaaaa</p></div>
         <div class="bt-align flex flex-column">
-            <button class="finish-bt red-bg" onclick="end()"><span class="bt-text">Acessar Quizz</span></button>
-            <button class="finish-home"><span class="return-home">Voltar para home</span></button>
+            <button class="finish-bt red-bg acessQuizz" onclick=""><span class="bt-text">Acessar Quizz</span></button>
+            <button class="finish-home" onclick="home()"><span class="return-home">Voltar para home</span></button>
         </div>
     </main>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>

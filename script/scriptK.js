@@ -20,7 +20,7 @@ promisse.then((answer)=>{
             document.querySelector('.withQuizz').classList.remove('displayNone')
 
             containerMyQuizzes.innerHTML += `
-            <div data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+            <div data-identifier="quizz-card" data-identifier="user-quizzes" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
                 <p>${answer.data[i].title}</p>
             </div>
             `
@@ -109,6 +109,7 @@ function insideQuizz (id) {
  
 
         header.scrollIntoView(true)
+        //window.scroll(0,0)
     })
 }
 

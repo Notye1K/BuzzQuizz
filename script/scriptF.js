@@ -148,7 +148,7 @@ function buildQuestions(questions)
     <div class="central-panel flex flex-column question">
 
             <div class="question-fill-guide weight-700">Pegunta 1</div>
-            <input class="create-quizz-input question-text needed" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+            <input class="create-quizz-input question-text needed"  type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
             <div class="error-text-align"><span class="question-error error-text"></span></div>
             <input class="create-quizz-input question-bgcolor needed" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
             <div class="error-text-align"><span class="color-error error-text"></span></div>
@@ -486,8 +486,12 @@ function unlockWrongAnswer(inputFocus)
             `
         }
     }
-
+}
 function end (){
+    document.querySelector('.quizz-levels').classList.add('displayNone')
+    document.querySelector('.finalScreenQuizz').classList.remove('displayNone')
+
+
     createQuizz.levels = []
     let inputTitle 
     let inputPorcent 
@@ -507,9 +511,15 @@ function end (){
         })   
     }
 
+    document.querySelector('.quizzDone').style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url("${createQuizz.image}")` // ${createQuizz.image}
+    document.querySelector('.quizzDone').style.backgroundSize = 'contain, cover'
+    document.querySelector('.quizzDone p').innerHTML = createQuizz.title
+
     //console.log(createQuizz)
     const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
     promisse.then((resposta)=> {
+        document.querySelector('.acessQuizz').onclick = `insideQuizz(${resposta.data.id})`
+
         console.log('deu certo')
         console.log(resposta)
 
@@ -538,3 +548,4 @@ function end (){
         alert('preencha corretamente')
     })
 }
+
