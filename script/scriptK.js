@@ -24,7 +24,8 @@ promisse.then((answer)=>{
                 <p>${answer.data[i].title}</p>
             </div>
             `
-
+            containerMyQuizzes.lastElementChild.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("${answer.data[i].image}")`
+            containerMyQuizzes.lastElementChild.style.backgroundSize = 'contain, cover' // 100% 100% contain, cover
             console.log(answer.data[i])
             console.log(answer.data)
             console.log(arraId)

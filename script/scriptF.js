@@ -611,6 +611,7 @@ function end()
     }
 
     document.querySelector('.quizzDone').style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url("${createQuizz.image}")` // ${createQuizz.image}
+    console.log(createQuizz.image);
     document.querySelector('.quizzDone').style.backgroundSize = 'contain, cover'
     document.querySelector('.quizzDone p').innerHTML = createQuizz.title
 
