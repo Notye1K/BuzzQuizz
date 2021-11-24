@@ -20,8 +20,12 @@ promisse.then((answer)=>{
             document.querySelector('.withQuizz').classList.remove('displayNone')
 
             containerMyQuizzes.innerHTML += `
-            <div data-identifier="quizz-card" data-identifier="user-quizzes" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+            <div data-identifier="quizz-card user-quizzes" class="quizz user-quizz" id="${answer.data[i].id}" onclick="insideQuizz(${answer.data[i].id})">
                 <p>${answer.data[i].title}</p>
+                <div class="manage-rectangle flex flex-column">
+                    <img class="pen-edit" src="/BuzzQuizz/assets/pen.png" alt="click to edit" onclick="editQuizz(this)">
+                    <img class="trash-delete" src="/BuzzQuizz/assets/trash.png" alt="click to delete" onclick="deleteQuizz(this)">
+                </div>
             </div>
             `
             containerMyQuizzes.lastElementChild.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url("${answer.data[i].image}")`
@@ -33,7 +37,7 @@ promisse.then((answer)=>{
         }
         else{
             quizzes.innerHTML += `
-            <div data-identifier="general-quizzes" data-identifier="quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
+            <div data-identifier="general-quizzes quizz-card" class="quizz" onclick="insideQuizz(${answer.data[i].id})">
                 <p>${answer.data[i].title}</p>
             </div>
             `
@@ -59,6 +63,7 @@ function insideQuizz (id) {
 
         document.querySelector('.insideQuizz').classList.remove('displayNone')
         document.querySelector('main').classList.add('displayNone')
+        document.querySelector('.finalScreenQuizz').classList.add('displayNone')
 
         const header = document.querySelector('.insideQuizz header')
         header.innerHTML = answer.data.title
@@ -190,3 +195,22 @@ function myquizz() {
     document.querySelector('.main').classList.remove('displayNone')
 }
 //falta -- data-identifier="user-quizzes" -- data-identifier="quizz-card" -- Tela de criação de quizz
+
+function editQuizz(image)
+{
+    
+}
+
+function deleteQuizz(image)
+{
+    const quizzToDelete = image.parentElement.parentElement.id;
+    const delete = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzToDelete}`, Secret-Key)
+
+/*<div data-identifier="quizz-card user-quizzes" class="quizz user-quizz" onclick="insideQuizz(${answer.data[i].id})">
+                <p>${answer.data[i].title}</p>
+                <div class="manage-rectangle flex flex-column">
+                    <img class="pen-edit" src="/BuzzQuizz/assets/pen.png" alt="click to edit" onclick="editQuizz(this)">
+                    <img class="trash-delete" src="/BuzzQuizz/assets/trash.png" alt="click to delete" onclick="deleteQuizz(this)">
+                </div>
+            </div>*/
+}

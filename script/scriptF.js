@@ -150,10 +150,10 @@ function buildQuestions(questions)
         <h2 class="inpage-title weight-700">Crie suas perguntas</h2>
     </div>
 
-    <div class="central-panel flex flex-column q1">
+    <div class="central-panel flex flex-column q1" data-identifier="question">
 
         <div class="question-fill-guide weight-700">Pegunta 1</div>
-        <input class="create-quizz-input question-text needed Title"  type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
+        <input class="create-quizz-input question-text needed Title" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
         <div class="error-text-align"><span class="question-error error-text"></span></div>
         <input class="create-quizz-input question-bgcolor needed colorTitle" type="text" placeholder="Cor de fundo da pergunta" onfocusout="checkColor(this)">
         <div class="error-text-align"><span class="color-error error-text"></span></div>
@@ -195,14 +195,14 @@ function buildQuestions(questions)
     for (let i = 2; i <= questions; i++) {
         questionBuild.innerHTML += 
         `
-        <div class="central-panel flex flex-column" onClick="expandQuestion(this)">
+        <div class="central-panel flex flex-column" data-identifier="expand" onClick="expandQuestion(this)">
             <div class="qtitle-and-icon flex">
                 <div class="question-fill-guide weight-700">Pegunta ${i}</div>
                 <img src="/BuzzQuizz/assets/Vector.png" alt="click to expand">
             </div>
         </div>
 
-        <div class="central-panel flex flex-column q${i} hidden">
+        <div class="central-panel flex flex-column q${i} hidden" data-identifier="question">
 
             <div class="question-fill-guide weight-700">Pegunta ${i}</div>
             <input class="create-quizz-input question-text needed Title" type="text" placeholder="Texto da pergunta" onfocusout="checkQuestionText(this)">
@@ -470,11 +470,11 @@ function buildLevels(number)
     const levels = document.querySelector('.levels')
     levels.innerHTML=
     `
-        <div class="central-panel flex flex-column level">
+        <div class="central-panel flex flex-column level" data-identifier="level">
             <div class="question-fill-guide weight-700">Nivel 1</div>
             <input class="create-quizz-input level-text l1" type="text" placeholder="Título do nível" onfocusout="checkLevelText(this)">
             <div class="error-text-align"><span class="lv-title-error error-text"></span></div>
-            <input class="create-quizz-input min-percentage Porcentl1" type="text" placeholder="% de acerto mínima" onfocusout="checkPercentage(this)">
+            <input class="create-quizz-input min-percentage Porcentl1" type="text" placeholder="% de acerto mínima" onfocusout="checkLevelZero(this)">
             <div class="error-text-align"><span class="percentage-error error-text"></span></div>
             <input class="create-quizz-input url URLl1" type="text" placeholder="URL da imagem do nível" onfocusout="checkURL(this)">
             <div class="error-text-align"><span class="url-error error-text"></span></div>
@@ -484,13 +484,13 @@ function buildLevels(number)
     `
     for (let i = 2; i <= number; i++) {
         levels.innerHTML += `
-        <div class="central-panel flex flex-column" onClick="expandQuestion(this)">
+        <div class="central-panel flex flex-column" onClick="expandQuestion(this)" data-identifier="expand">
             <div class="qtitle-and-icon flex">
                 <div class="question-fill-guide weight-700">Nível ${i}</div>
                 <img src="/BuzzQuizz/assets/Vector.png" alt="click to expand">
             </div>
         </div>
-        <div class="central-panel flex flex-column level hidden">
+        <div class="central-panel flex flex-column level hidden" data-identifier="level">
             <div class="question-fill-guide weight-700">Nivel ${i}</div>
             <input class="create-quizz-input level-text l${i}" type="text" placeholder="Título do nível" onfocusout="checkLevelText(this)">
             <div class="error-text-align"><span class="lv-title-error error-text"></span></div>
@@ -515,6 +515,21 @@ function checkLevelText(lvlTxtInput)
         lvlTxtError.innerHTML = "O título do nível deve ter no mínimo 10 caracteres";
     else
         lvlTxtError.innerHTML = '';
+}
+
+function checkLevelZero(percentageInput)
+{
+    const percentError = percentageInput.nextElementSibling.firstChild;
+    if(percentageInput.value == '')
+    {
+        return;
+    }
+    if(isNaN(percentageInput.value))
+        percentError.innerHTML = "Por favor digite a porcentagem de acertos de 0 (sem o simbolo %)";
+    else if(percentageInput.value > 0)
+        percentError.innerHTML = "O nível 1 deve ter uma porcentagem de acerto de 0%";
+    else
+        percentError.innerHTML = '';
 }
 
 function checkPercentage(percentageInput)
@@ -619,7 +634,7 @@ function end()
 
     const promisse = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',createQuizz)
     promisse.then((resposta)=> {
-        document.querySelector('.acessQuizz').onclick = `insideQuizz(${resposta.data.id})`
+        document.querySelector('.acessQuizz').setAttribute('onclick', `insideQuizz(${resposta.data.id})`);
 
         console.log('deu certo')
         console.log(resposta)

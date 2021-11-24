@@ -100,6 +100,34 @@ main {
     flex-shrink: 0;
 }
 
+.user-quizz
+{
+    position: relative;
+}
+
+.manage-rectangle
+{
+    padding: 15px 12px;
+    height: 87px;
+    background-color: #EC362D;
+    border-radius: 10px 0px 0px 11px;
+    justify-content: space-between;
+    position: absolute;
+    right: 0;
+    top: 9px;
+}
+
+.pen-edit
+{
+    width: 18px !important;
+    height: 18px !important;
+}
+.trash-delete
+{
+    width: 19px !important;
+    height: 22px !important;
+}
+
 
 .container {
     width: 1051px;
@@ -152,9 +180,6 @@ h1 {
 .displayNone {
     display: none;
 }
-
-
-
 
 /*                      PAGE 2                 */
 

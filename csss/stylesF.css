@@ -115,6 +115,10 @@ body
     height: 54px;
     width: 368px;
 }
+.finish-bt:hover
+{
+    cursor: pointer;
+}
 
 .bt-text
 {
@@ -134,6 +138,10 @@ body
     margin-top: 15px;
     background-color: transparent;
     border: none;
+}
+.finish-home:hover
+{
+    cursor: pointer;
 }
 
 @media (max-width: 600px)
